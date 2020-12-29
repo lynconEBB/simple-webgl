@@ -1,4 +1,4 @@
-export const createGeometry = (gl,verticesData,dataLayout) => {
+export const createGeometry = (gl,verticesData, dataLayout) => {
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER,verticesData,gl.STATIC_DRAW);
