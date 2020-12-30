@@ -26,6 +26,12 @@ module.exports = {
                         outputPath: "imgs"
                     }
                 }
+            },
+            {
+                test: /\.(frag|vert)$/,
+                use: {
+                    loader:"raw-loader",
+                }
             }
         ]
     }
