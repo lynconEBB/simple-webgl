@@ -1,7 +1,15 @@
-export const createGeometry = (gl,verticesData, dataLayout) => {
-    const vertexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER,vertexBuffer);
+export const createGeometry = (gl, verticesData, verticesIndices, dataLayout) => {
+    const VAO = gl.createVertexArray();
+    gl.bindVertexArray(VAO);
+
+    const VBO = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,VBO);
     gl.bufferData(gl.ARRAY_BUFFER,verticesData,gl.STATIC_DRAW);
+
+    const EBO = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,EBO);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,verticesIndices, gl.STATIC_DRAW);
+
     
     let stride = 0;
     for (const layout of dataLayout) {
@@ -17,8 +25,10 @@ export const createGeometry = (gl,verticesData, dataLayout) => {
     }
     
     return {
-        buffer: vertexBuffer,
-        length: verticesData.byteLength / stride
+        VBO,
+        VAO,
+        EBO,
+        length: verticesIndices.length
     };
 }
 
@@ -51,7 +61,7 @@ export const prepareProgram = (gl,vertexShaderSource, fragmentShaderSource) => {
 }
 
 export const draw = (gl,program, geometry) => {
-    gl.bindBuffer(gl.ARRAY_BUFFER,geometry.buffer);
+    gl.bindVertexArray(geometry.VAO);
     gl.useProgram(program);
-    gl.drawArrays(gl.TRIANGLES,0,geometry.length);
+    gl.drawElements(gl.TRIANGLES,geometry.length,gl.UNSIGNED_BYTE,0);
 }
