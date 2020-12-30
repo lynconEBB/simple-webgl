@@ -35,8 +35,8 @@ const vertexShader = `#version 300 es
 
 const squareVertices = new Float32Array([
     -1, -1, 0, 1, 1 ,1,
-     1, -1, 0, 0 ,0 ,0,
-    -1,  1, 0, 1, 1, 1,
+     1, -1, 0, 1 ,1 ,1,
+    -1,  1, 0, 0, 0, 0,
      1,  1, 0, 0, 0, 0 
 ]);
 
