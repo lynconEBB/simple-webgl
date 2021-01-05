@@ -1,5 +1,5 @@
 import {createGeometry, prepareProgram, draw} from "./js/utils";
-import fragmentShader from "./assets/second.frag";
+import fragmentShader from "./assets/fourth.frag";
 import vertexShader from "./assets/first.vert";
 import "./scss/style.scss";
 
@@ -14,7 +14,7 @@ gl.clear(gl.COLOR_BUFFER_BIT);
 
 const squareVertices = new Float32Array([
     -1, -1, 0, 0, 0 ,0,
-     1, -1, 0, 1 ,1 ,0,
+     1, -1, 0, 1 ,0 ,0,
     -1,  1, 0, 0, 1, 0,
      1,  1, 0, 1, 1, 0 
 ]);
