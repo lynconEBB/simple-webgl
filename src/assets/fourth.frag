@@ -8,7 +8,8 @@ in vec3 vColor;
 float linearStep(in float edge1, in float edge2, in float x) {
     float a = x - edge1;
     float newEdge = edge2 - edge1;
-    return a / newEdge;
+    float b = a / newEdge;
+    return clamp(b,0.,1.);
 } 
 
 //step(a,b)

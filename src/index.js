@@ -1,5 +1,5 @@
 import {createGeometry, prepareProgram, draw} from "./js/utils";
-import fragmentShader from "./assets/fourth.frag";
+import fragmentShader from "./assets/sixth.frag";
 import vertexShader from "./assets/first.vert";
 import "./scss/style.scss";
 
