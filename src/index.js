@@ -41,19 +41,16 @@ gl.useProgram(program);
 
 const render = () => {
     
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    //gl.clear(gl.COLOR_BUFFER_BIT);
     
-    gl.uniform1f(timeUniform, performance.now());
-
+    gl.uniform1f(timeUniform, performance.now()*.005);
+    
     draw(gl, program, squareGeometry);
 
-    gl.flush();
     requestAnimationFrame(render);
 }
 render();
-// setInterval(render, 500);
 
-// render();
 
 
 
