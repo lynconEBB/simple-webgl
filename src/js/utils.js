@@ -61,7 +61,10 @@ export const prepareProgram = (gl,vertexShaderSource, fragmentShaderSource) => {
 }
 
 export const draw = (gl,program, geometry) => {
+   
     gl.bindVertexArray(geometry.VAO);
-    gl.useProgram(program);
+   
+
     gl.drawElements(gl.TRIANGLES,geometry.length,gl.UNSIGNED_BYTE,0);
+
 }
