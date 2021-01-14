@@ -1,4 +1,6 @@
-export const createGeometry = (gl, verticesData, verticesIndices, dataLayout) => {
+import gl from "./webGL";
+
+export const createGeometry = ( verticesData, verticesIndices, dataLayout) => {
     const VAO = gl.createVertexArray();
     gl.bindVertexArray(VAO);
 
@@ -32,7 +34,7 @@ export const createGeometry = (gl, verticesData, verticesIndices, dataLayout) =>
     };
 }
 
-export const prepareProgram = (gl,vertexShaderSource, fragmentShaderSource) => {
+export const prepareProgram = (vertexShaderSource, fragmentShaderSource) => {
     const vertexShaderBuffer = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShaderBuffer, vertexShaderSource);
     gl.compileShader(vertexShaderBuffer);
@@ -60,7 +62,7 @@ export const prepareProgram = (gl,vertexShaderSource, fragmentShaderSource) => {
     }
 }
 
-export const draw = (gl,program, geometry) => {
+export const draw = (program, geometry) => {
    
     gl.bindVertexArray(geometry.VAO);
    

@@ -6,8 +6,6 @@ precision highp int;
 out vec4 FragColor;
 in vec3 vColor;
 
-uniform float time; 
-
 vec4 applyCut(in vec2 uv, in vec2 cut) {
     vec2 mask = step(cut,uv);
     float finalMask = mask.x * mask.y;
