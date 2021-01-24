@@ -1,6 +1,7 @@
 import { createEulerMatrix } from "./utils/matricesFactory";
 import {createGeometry, prepareProgram, draw} from "./utils/utils";
 import gl from "./utils/webGL";
+import Matrix4 from "./models/Matrix4";
 
 const getShaders = async () => {
     const vertexShader = await (await fetch("./shaders/second.vert")).text();
@@ -11,6 +12,19 @@ const getShaders = async () => {
 }
 
 const main = (shaders) => {
+    const testMatrix = new Matrix4([
+        0, 5,-3,0,
+        2,-1, 3,1,
+        1,-3, 2,1,
+        0, 2,-2,5
+    ]);
+    //console.log(testMatrix.cofactorOf(7));
+    //testMatrix.cofactorMatrix;
+    console.log(testMatrix.cofactorMatrix);
+    console.log(testMatrix.adjugate);
+    console.log(testMatrix.inverse);
+
+
     gl.viewport(0,0,window.innerWidth, window.innerHeight);
     gl.clearColor(0,1,1,1);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -48,8 +62,7 @@ const main = (shaders) => {
 
     const render = () => {
         gl.clear(gl.COLOR_BUFFER_BIT);
-        let rotationMatrix = createEulerMatrix(performance.now()*.05,performance.now()*.005,performance.now()*.005)
-      
+        let rotationMatrix = createEulerMatrix(performance.now()*.0005,performance.now()*.005,performance.now()*.005)
         gl.uniformMatrix4fv(rotationMatrixUniform,false,rotationMatrix);
         
         draw(program, squareGeometry);

@@ -8,7 +8,12 @@ out vec3 vColor;
 uniform mat4 rotation;
 
 void main() {
+    mat4 teste = mat4(1., 0., 0., 0.,
+                      0., 1., 0., 0.,
+                      0., 0., 1., 0.,
+                      0., 0., 0., 1.);
     gl_Position = rotation * vec4(aPos, 1.0);
-    //gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+
+    //gl_Position = teste * vec4(aPos, 1.0);
     vColor = aColor;
 }
